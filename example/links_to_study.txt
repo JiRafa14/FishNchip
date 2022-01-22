@@ -1,0 +1,7 @@
+## This is the study taken as a reference to set the parameters_file.txt default settings
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8092594/
+
+## This is the GEO entry, where the 6 samples can be found, as well as the SRA codes to download the samples (as written in the parameters_file.txt
+
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE157332

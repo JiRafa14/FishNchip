@@ -1,0 +1,50 @@
+## Parameter file
+
+## The directories do not end with "/", as shown below
+
+working_directory: /home/usr/chipseq
+folder_name: experiment
+number_chip: 3
+number_ctrl: 3
+path_to_genome: /path/to/genome.fa.gz
+path_to_annotation: /path/to/annotation.gff3.gz
+is_paired: FALSE
+path_to_scripts: /path/to/scriptsfolder
+sample_format: LINK
+number_of_experiments: 3
+use_summits: FALSE
+word_length: 6,8
+size: 200
+pvalue_cutoff: 0.05
+transcription_factor_name: ATH1
+upstream_promoter_length: 1000
+downstream_promoter_length: 1000
+
+## If paired = TRUE and sample format = FILE; uncomment, add ":" and complete
+
+#chip1_A
+#chip1_B 
+#chip2_A
+#chip2_B
+
+#etc
+
+#ctrl1_A
+#ctrl1_B
+#ctrl2_A
+#ctrl2_B
+
+#etc
+
+## Else, add path or link
+
+chip1: SRR12569544
+chip2: SRR12569545
+chip3: SRR12569546
+
+ctrl1: SRR12569547
+ctrl2: SRR12569548
+ctrl3: SRR12569549
+
+#etc
+
