@@ -51,7 +51,7 @@ To install the FISHANDCHIPS software, follow these steps:
 
 2. Place the scripts folder and parameters_file.txt wherever is desired
 
-3. In the parameteres_file.txt, write the path_to_scripts path. Final dash ("/") must not be writtend at the end.
+3. In the parameteres_file.txt, write the path to the "scripts" folder you downloaded, in path_to_scripts: . Final dash ("/") must not be written at the end.
 
 4. Add the scripts folder to the bash.rc file. This enables fishandchips.sh script to be launched from any folder.
 
