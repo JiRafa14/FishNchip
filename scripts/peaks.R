@@ -73,7 +73,21 @@ print("Writing out results")
 
 annot <- as.data.frame(peakAnno)
 
-target.genes <- annot$geneId[annot$annotation == "Promoter"]
+target.printing <- function(a,b)
+{
+	if (a >= 2000 | b >= 2000)
+	{
+		annot$geneId[annot$annotation == "Promoter (<=1kb)" | annot$annotation == "Promoter (1-2kb)" |
+                                         annot$annotation == "Promoter (2-3kb)"]	
+	}
+
+	else if (a < 2000 & b < 2000)
+	{
+		 annot$geneId[annot$annotation == "Promoter"]
+	}
+}
+
+target.genes <- target.printing(upprom,downprom)
 
 write(x = target.genes,file = paste(c(tfname,"_target_genes.txt"),collapse = ""))
 
