@@ -206,6 +206,7 @@ The enrichGO function receives the regulome, the universe defined, an OrgDb obje
 
 After this, the analysys of the peaks is over. 2 plots are generated in the Rplots.pdf file: the transcription factor binding sites and the distribution of genomic loci relative to the TSS. Also, the gene set enrichment analysis results is saved in GO_enrichment.csv, and promoters in promoters.csv. As said above, the regulome is saved in <transcription factor name>_target_genes.txt.
 
+It is important to note that the regulome is obtained from the peaks present in ALL summits.bed or peaks.narrowPeak files. This is, given 5 control and 5 chip files, if a peak is present in only 4 out of 5 chip vs control comparisons, then it will not be used to obtain the regulome. We preferred to be extra restrictive, rather than counting  every peak, even when it is only present in, for example,  1 out of 5 comparisons.
 
 ## 6. Example
 
