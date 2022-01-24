@@ -45,7 +45,7 @@ library(TxDb.Athaliana.BioMart.plantsmart28)
 txdb <- TxDb.Athaliana.BioMart.plantsmart28
 
 as.data.frame(head(genes(txdb)))
-
+AT.universe <- as.data.frame(genes(txdb))$gene_id
 ## Read dna peaks file
 
 peaks <- readPeakFile(peakfile = dnabeds, header=FALSE)
@@ -88,7 +88,7 @@ library("clusterProfiler")
 #BiocManager::install("org.At.tair.db")
 library(org.At.tair.db)
 
-goenrichment <- clusterProfiler::enrichGO(gene = target.genes,OrgDb = org.At.tair.db,ont = "ALL",keyType = "TAIR", pvalueCutoff = pval)
+goenrichment <- clusterProfiler::enrichGO(gene = target.genes,OrgDb = org.At.tair.db,ont = "ALL",keyType = "TAIR", pvalueCutoff = pval, universe = AT.universe)
 head(goenrichment)
 
 goenrichment <- as.data.frame(goenrichment)
