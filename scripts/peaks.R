@@ -96,3 +96,22 @@ write.csv(x = goenrichment,file = "GO_enrichment.csv")
 
 promoter <- as.data.frame(promoter)
 write.csv(x = promoter,file = "promoters.csv")
+
+## GO terms summary
+
+##BiocManager::install("rrvgo")
+library("rrvgo")
+
+## rrvgo package uses a input vector of GO terms and vector of scores. 
+## The higher the score, the more significative. Thus, we will use -log(adj.pvalue) as score
+
+GO.terms <- goenrichment$ID
+GO.score <- -log(goenrichment$p.adjust)
+names(GO.score) <- GO.terms
+
+# Calculate the similarity matrix between GO terms
+simMatrix <- calculateSimMatrix(GO.terms, orgdb = org.At.tair.db,ont = "BP", method="Rel")
+# Calculate a reduced matrix 
+
+reduced.terms <- reduceSimMatrix(simMatrix, GO.score, threshold = 0.7, orgdb = org.At.tair.db )
+treemapPlot(reduced.terms)
