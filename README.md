@@ -32,8 +32,12 @@ University of Seville
 
 ### f. Peaks calling
 
+### g. Regulome determination and Gene Set Enrichment Analysis
 
-## 6. Example
+## 6. Useful results
+
+
+## 7. Example
 
 
 ## 1. Summary 
@@ -62,7 +66,7 @@ To install the FISHANDCHIPS software, follow these steps:
 
 Tools needed to run the bash scripts: bowtie2 (https://howtoinstall.co/es/bowtie2), fastqc (https://howtoinstall.co/es/fastqc), samtools (https://howtoinstall.co/es/samtools) , bedtools (https://bedtools.readthedocs.io/en/latest/content/installation.html) , SRA-toolkit (https://hpc.nih.gov/apps/sratoolkit.html) ,  macs2 (https://command-not-found.com/macs2) and homer (http://homer.ucsd.edu/homer/introduction/install.html). These tools can be installed running the following command: sudo apt-get install <tool_name>
 
-Packages needed to run the R script: ChipSeeker (https://www.bioconductor.org/packages/release/bioc/html/ChIPseeker.html), DO.db (https://www.bioconductor.org/packages/release/data/annotation/html/DO.db.html), GO.db (https://www.bioconductor.org/packages/release/data/annotation/html/GO.db.html), clusterProfiler (https://www.bioconductor.org/packages/release/bioc/html/clusterProfiler.html),  TxDb.Athaliana.Biomart.plantsmart28 (https://www.bioconductor.org/packages/release/data/annotation/html/TxDb.Athaliana.BioMart.plantsmart28.html) and org.At.tair.db (https://www.bioconductor.org/packages/release/data/annotation/html/org.At.tair.db.html). All packages can be downloaded from Bioconductor, running the following command in R: BiocManager::install(“<package_name>”). 
+Packages needed to run the R script: ChipSeeker (https://www.bioconductor.org/packages/release/bioc/html/ChIPseeker.html), DO.db (https://www.bioconductor.org/packages/release/data/annotation/html/DO.db.html), GO.db (https://www.bioconductor.org/packages/release/data/annotation/html/GO.db.html), clusterProfiler (https://www.bioconductor.org/packages/release/bioc/html/clusterProfiler.html),  TxDb.Athaliana.Biomart.plantsmart28 (https://www.bioconductor.org/packages/release/data/annotation/html/TxDb.Athaliana.BioMart.plantsmart28.html), rrvgo (http://www.bioconductor.org/packages/release/bioc/vignettes/rrvgo/inst/doc/rrvgo.html) and org.At.tair.db (https://www.bioconductor.org/packages/release/data/annotation/html/org.At.tair.db.html). All packages can be downloaded from Bioconductor, running the following command in R: BiocManager::install(“<package_name>”). 
 
 
 ## 4. Input
@@ -83,40 +87,39 @@ The parameters passed to the function need to be written on a TXT file, the “p
 The parameters file includes the following information:
 
 
--working_directory: The path to the directory where will be generated the experiment directory.
+- working_directory: The path to the directory where will be generated the experiment directory.
 
--folder_name: The name of the experiment directory, which will be located in the working directory. Every file created by the pipeline will be saved in a subdirectory of the experiment directory.
+- folder_name: The name of the experiment directory, which will be located in the working directory. Every file created by the pipeline will be saved in a subdirectory of the experiment directory.
 
--number_chip: Number of samples for every transcription factor sample. 
+- number_chip: Number of samples for every transcription factor sample. 
 
--number_ctrl: Number of samples for every control sample.
+- number_ctrl: Number of samples for every control sample.
 
--path_to_genome: The path to the file to be used as reference genome, in FASTA format. It must be in .fa.gz format. .gff3.gz was tested and seems to work well too.
+- path_to_genome: The path to the file to be used as reference genome, in FASTA format. It must be in .fa.gz format. .gff3.gz was tested and seems to work well too.
 
--path_to_annotation: The path to the file to be used as reference genome annotation, in GTF format. It must be in gtf.gz format.
+- path_to_annotation: The path to the file to be used as reference genome annotation, in GTF format. It must be in gtf.gz format.
 
--paired: Write FALSE for single-end sequenced samples and TRUE for paired-end sequenced samples.
+- paired: Write FALSE for single-end sequenced samples and TRUE for paired-end sequenced samples.
 
--path_to_scripts: The path to every scripts that the pipeline uses. The final slash of the path mustn´t be written, as shown in parameters_file.txt
+- path_to_scripts: The path to every scripts that the pipeline uses. The final slash of the path mustn´t be written, as shown in parameters_file.txt
 
--sample_format: The format in which the samples used are found fot the pipeline. Write FILE for file format or LINK for download link format. If a link is provided, it must be compatible with the fastq-dump function.
+- sample_format: The format in which the samples used are found fot the pipeline. Write FILE for file format or LINK for download link format. If a link is provided, it must be compatible with the fastq-dump function.
 
--number_of_experiments: Number of replicas that have been obtained. This pipeline is designed to analyse all the samples provided, returning a quality control and .bam , .bam.bai files. However, when performing peaks calling with macs2, a pair of control and CHiP data must be introduced. This way, if 3 CHiP samples and 4 control samples are obtained, number_of_experiments: 3 (3 full pairs).
+- number_of_experiments: Number of replicas that have been obtained. This pipeline is designed to analyse all the samples provided, returning a quality control and .bam , .bam.bai files. However, when performing peaks calling with macs2, a pair of control and CHiP data must be introduced. This way, if 3 CHiP samples and 4 control samples are obtained, number_of_experiments: 3 (3 full pairs).
 
--use_summits: Depending on the restriction level desired, use summit (TRUE) (more restrictive) or narrowpeaks (FALSE) (less restrictive).
+- use_summits: Depending on the restriction level desired, use summit (TRUE) (more restrictive) or narrowpeaks (FALSE) (less restrictive).
 
--word_length: Word length enrichment searched by homer. Default is 8,10,12
+- word_length: Word length enrichment searched by homer. Default is 8,10,12
 
--size: Size of the peak in nucleotides where homer searches for word enrichment. Default is 200
+- size: Size of the peak in nucleotides where homer searches for word enrichment. Default is 200
 
--pvalue_cutoff: Threshold used to study the enrichment of gene ontology terms. By default, it has a value of 0.05.
+- pvalue_cutoff: Threshold used to study the enrichment of gene ontology terms. By default, it has a value of 0.05.
 
--transcription_factor_name: Name of the transcription factor in the study.
+- transcription_factor_name: Name of the transcription factor in the study.
 
--upstream_promoter_length: Upstream length of the promoter from the TSS. By default, it has a value of 1000.
+- upstream_promoter_length: Upstream length of the promoter from the TSS. By default, it has a value of 1000.
 
-
--downstream_promoter_length: Downstream length of the promoter from the TSS. By default, it has a value of 1000.
+- downstream_promoter_length: Downstream length of the promoter from the TSS. By default, it has a value of 1000.
 
 
 When a parameters file is passed to the pipeline FISHANDCHIPS, the pipeline stores the lines of the parameters file in different variables, and prints out on the screen every variable for each parameter.
@@ -204,11 +207,28 @@ Once the regulome is determined, the next step is the Gene Set Enrichment Analys
 
 The enrichGO function receives the regulome, the universe defined, an OrgDb object -in this case, that for Arabidopsis thaliana-, the ontology terms to analyse -all, in this case-, the p-value cutoff and the keyType -in this case, TAIR-. 
 
-After this, the analysys of the peaks is over. 2 plots are generated in the Rplots.pdf file: the transcription factor binding sites and the distribution of genomic loci relative to the TSS. Also, the gene set enrichment analysis results is saved in GO_enrichment.csv, and promoters in promoters.csv. As said above, the regulome is saved in <transcription factor name>_target_genes.txt.
+In order to make it easier to analyze, a summary of the GO terms is generated. A treemap containing the GO terms grouped by category is created and plotted. 
+
+After this, the analysys of the peaks is over. 3 plots are generated in the Rplots.pdf file: 1) the transcription factor binding sites, 2) the distribution of genomic loci relative to the TSS and 3) Summary of the GO terms obtained from the analysis of the regulome. This GO summary was performed using "Rel" method. Also, the gene set enrichment analysis results (not summarized) is saved in GO_enrichment.csv. Promoters in promoters.csv. As said above, the regulome is saved in <transcription factor name>_target_genes.txt.
 
 It is important to note that the regulome is obtained from the peaks present in ALL summits.bed or peaks.narrowPeak files. This is, given 5 control and 5 chip files, if a peak is present in only 4 out of 5 chip vs control comparisons, then it will not be used to obtain the regulome. We preferred to be extra restrictive, rather than counting  every peak, even when it is only present in, for example,  1 out of 5 comparisons.
 
-## 6. Example
+## 6. Useful results
+
+In this section the main results files will be listed and its contents summarized. All of this files can be found in results folder
+
+- __<TF name>_target_genes.txt__: List of genes potentially regulated by the transcription factor. The chosen method for regulome determination is "nearest downstream gene". For higher restrictivity, we suggest performing RNA-seq analysis and intersect differentially expressed genes with the given results.
+
+- __promoters.csv__: List of all the promoters obtained from the Arabidopsis Thaliana database.
+
+- __GO_enrichment.csv__: Result of performing a GO enrichment analysis of the regulome genes. It should enlighten the main processes in which the transcription factor takes part in.
+
+- __Rplots.pdf__: A pdf containing the three plots generated: 1) a pie plot with the transcription factor binding sites (where the peaks are located), 2) the distribution of genomic loci relative to the TSS with the given parameters and 3) Summary of the GO terms obtained from the analysis of the regulome. 
+
+- enriched_words/__knownResults.html__ and enriched_words/__homerResults.html__: Enriched words of <word_length:> length. knownResults.html shows the already described motifs and their names. homerResults.html shows _de novo_ motifs.
+
+
+## 7. Example
 
 We use an study about the role Arabidopsis thaliana homeobox gene 1 in the control of the plant architecture (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8092594/). In this study the scientists do a Chip-seq (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE157332). The pipeline can use this samples and the parameters_file.txt has the default values set according to this study . 
 
