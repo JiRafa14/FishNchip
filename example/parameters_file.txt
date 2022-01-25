@@ -1,6 +1,9 @@
 ## Parameter file
 
 ## The directories do not end with "/", as shown below
+## In order to achieve greater clarity, parameters are divided into complusory completion and optional completion (where default paramters are set).
+
+# Compulsory completion
 
 working_directory: /home/usr/chipseq
 folder_name: experiment
@@ -12,6 +15,9 @@ is_paired: FALSE
 path_to_scripts: /path/to/scriptsfolder
 sample_format: LINK
 number_of_experiments: 3
+
+# Optional completion
+
 use_summits: FALSE
 word_length: 6,8
 size: 200
@@ -20,6 +26,8 @@ transcription_factor_name: ATH1
 upstream_promoter_length: 1000
 downstream_promoter_length: 1000
 
+## There are two options of sample input
+
 ## If paired = TRUE and sample format = FILE; uncomment, add ":" and complete
 
 #chip1_A
@@ -27,7 +35,6 @@ downstream_promoter_length: 1000
 #chip2_A
 #chip2_B
 
-#etc
 
 #ctrl1_A
 #ctrl1_B
@@ -36,7 +43,8 @@ downstream_promoter_length: 1000
 
 #etc
 
-## Else, add path or link
+## Else, add path or link. This is the case in the given example, where the link from SRA database is used.
+## If format = FILE is used, then it should look like /home/usr/downloaded_samples/chip1 , etc 
 
 chip1: SRR12569544
 chip2: SRR12569545
