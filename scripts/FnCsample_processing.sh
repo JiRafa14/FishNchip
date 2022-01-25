@@ -40,7 +40,7 @@ then
 		rm chip${IND}.sam
 		bamCoverage -bs 5 --normalizeUsing CPM --bam chip${IND}.bam -o chip${IND}.bw
 
-
+		rm chip${IND}.fastq.gz
 		cd ..
 	elif [ $CTRL = TRUE ]
 	then
@@ -54,7 +54,8 @@ then
                 samtools index ctrl${IND}.bam
 		rm ctrl${IND}.sam
 		bamCoverage -bs 5 --normalizeUsing CPM --bam ctrl${IND}.bam -o ctrl${IND}.bw
-
+		rm ctrl${IND}.fastq.gz
+		
 		cd ..
 	fi
 
@@ -75,7 +76,7 @@ then
                 samtools index chip${IND}.bam
 		rm chip${IND}.sam
 		bamCoverage -bs 5 --normalizeUsing CPM --bam chip${IND}.bam -o chip${IND}.bw
-
+		rm chip${IND}_A.fastq.gz chip${IND}_B.fastq.gz
 
 		cd ..
 
@@ -94,8 +95,9 @@ then
 		rm ctrl${IND}.sam
 
 		bamCoverage -bs 5 --normalizeUsing CPM --bam ctrl${IND}.bam -o ctrl${IND}.bw
+		rm ctrl${IND}_A.fastq.gz ctrl${IND}_B.fastq.gz
 
-
+		
 		cd ..
 	fi
 
