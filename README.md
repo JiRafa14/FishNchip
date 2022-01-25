@@ -217,7 +217,7 @@ It is important to note that the regulome is obtained from the peaks present in 
 
 In this section the main results files will be listed and its contents summarized. All of this files can be found in results folder
 
-- __<TF name>_target_genes.txt__: List of genes potentially regulated by the transcription factor. The chosen method for regulome determination is "nearest downstream gene". For higher restrictivity, we suggest performing RNA-seq analysis and intersect differentially expressed genes with the given results.
+- __<TF name> target genes.txt__: List of genes potentially regulated by the transcription factor. The chosen method for regulome determination is "nearest downstream gene". For higher restrictivity, we suggest performing RNA-seq analysis and intersect differentially expressed genes with the given results.
 
 - __promoters.csv__: List of all the promoters obtained from the Arabidopsis Thaliana database.
 
