@@ -23,8 +23,8 @@ word_length: 6,8
 size: 200
 pvalue_cutoff: 0.05
 transcription_factor_name: ATH1
-upstream_promoter_length: 1000
-downstream_promoter_length: 1000
+upstream_promoter_length: 3000
+downstream_promoter_length: 1500
 
 ## There are two options of sample input
 
