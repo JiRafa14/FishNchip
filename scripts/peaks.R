@@ -114,4 +114,4 @@ simMatrix <- calculateSimMatrix(GO.terms, orgdb = org.At.tair.db,ont = "BP", met
 # Calculate a reduced matrix 
 
 reduced.terms <- reduceSimMatrix(simMatrix, GO.score, threshold = 0.7, orgdb = org.At.tair.db )
-treemapPlot(reduced.terms)
+treemapPlot(reduced.terms, title= "Summary of GO terms")
