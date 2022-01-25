@@ -221,9 +221,9 @@ In this section the main results files will be listed and its contents summarize
 
 - __promoters.csv__: List of all the promoters obtained from the Arabidopsis Thaliana database.
 
-- __GO_enrichment.csv__: Result of performing a GO enrichment analysis of the regulome genes. It should enlighten the main processes in which the transcription factor takes part in.
+- __GO_enrichment.csv__: Result of performing a GO enrichment analysis of the regulome genes. It should enlighten the main processes in which the transcription factor takes part in. All 3 GO ontology terms are saved (biological process, cellular component and molecular function)
 
-- __Rplots.pdf__: A pdf containing the three plots generated: 1) a pie plot with the transcription factor binding sites (where the peaks are located), 2) the distribution of genomic loci relative to the TSS with the given parameters and 3) Summary of the GO terms obtained from the analysis of the regulome. 
+- __Rplots.pdf__: A pdf containing the three plots generated: 1) a pie plot with the transcription factor binding sites (where the peaks are located), 2) the distribution of genomic loci relative to the TSS with the given parameters and 3) Summary of the GO terms obtained from the analysis of the regulome. Only biological process GO terms were used to create the summary plot. 
 
 - enriched_words/__knownResults.html__ and enriched_words/__homerResults.html__: Enriched words of <word_length:> length. knownResults.html shows the already described motifs and their names. homerResults.html shows _de novo_ motifs.
 
