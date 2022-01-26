@@ -42,9 +42,9 @@ University of Seville
 
 ## 1. Summary 
 
-This repository is made up of 3 bash scripts (fishandchips, FnC_sample_processing and peakAnalysis) and one R script (peaks.R), to analyse unlimited ChIP-seq samples of transcription factors from Arabidopsis thaliana, comparing all of them with the same control samples. Actually, by running the main script, fishandchips, the whole analysis is done, since this script is programmed to run the other three scripts when required.
+This repository is made up of 3 bash scripts (fishandchips, FnC_sample_processing and peakAnalysis) and one R script (peaks.R), to analyse unlimited ChIP-seq samples of transcription factors from Arabidopsis thaliana. Actually, by running the main script, fishandchips, the whole analysis is done, since this script is programmed to run the other three scripts when required.
 
-This way, with only one command, the whole ChIP-seq samples analysis is done and organized in intuitive directories. Briefly, this analysis consists of the quality control of the samples, the reads mapping, the peaks calling, the regulome determination and Gene Set Enrichment Analysis.
+This way, with only one command, the whole ChIP-seq analysis is performed and organized into intuitive directories. Briefly, this analysis consists of the quality control of the samples, the reads mapping, the peaks calling, the regulome determination and Gene Set Enrichment Analysis.
 
 
 ## 2. Installation
