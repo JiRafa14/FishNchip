@@ -107,8 +107,8 @@ The parameters file includes the following information:
 
 - number_of_experiments: Number of replicas that have been obtained. This pipeline is designed to analyse all the samples provided, returning a quality control and .bam , .bam.bai files. However, when performing peaks calling with macs2, a pair of control and CHiP data must be introduced. This way, if 3 CHiP samples and 4 control samples are obtained, number_of_experiments: 3 (3 full pairs).
 
-- use_summits: Depending on the restriction level desired, use summit (TRUE) (more restrictive) or narrowpeaks (FALSE) (less restrictive).
-
+- use_summits: Depending on the restriction level desired, use summit (TRUE) (more restrictive) or narrowPeak (FALSE) (less restrictive) files for peak analysis. If fully automatized analysis is desired, we recommend using the narrowPeak.
+ 
 - word_length: Word length enrichment searched by homer. Default is 8,10,12
 
 - size: Size of the peak in nucleotides where homer searches for word enrichment. Default is 200
@@ -189,7 +189,8 @@ To call peaks, the function macs2 with the command callpeak is used. The argumen
 -- outdir to specify the output directory, which is still the results directory.
 
 PeakAnalysis.sh is launched for each pair. For example, if we have 3 chip samples and 4 control samples, peakAnalysis.sh would run 3 times. The sample that is left loose does not continue in the analysis. As the samples are being processed, the second blackboard is filled in. When this step is finished, it is checked if the number of experiments is greater than 1. Depending on how comprehensive the study wants to be, the .bed or .NarrowPeak file is generated.
-On the contrary, if we have more than one experiment, a loop is generated in which the bed or NarrowPeak files generated for each experiment are compared, generating a merged_bed or merged_NarrowPeak file.
+On the contrary, if we have more than one experiment, a loop is generated in which the summits.bed or peaks.narrowPeak files generated for each experiment are merged, generating a merged_bed or merged_NarrowPeak file. This means only peaks present in every sample are finally present in the merged file.
+__IMPORTANT__: If summits.bed files are used (use_summits = TRUE in the parameters file), then the script will try to merge the summits.bed files. However, the DNA beds in these files are 1-2 nt long. This means that, despite the possibility of having a peak present in every sample, the "summit" DNA beds might not be placed exactly in the same position, thus not being incorporated into the merged file. If use_summits = TRUE and the merged_beds.bed is found to have no DNA beds in it, then change settings to use_summits = FALSE or perform the peak analysis manually (for X samples, sampleX_summits.bed files are always generated in results folder).
 
 
 ### g. Regulome determination and Gene Set Enrichment Analysis
